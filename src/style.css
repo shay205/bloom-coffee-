@@ -109,6 +109,7 @@ section[id] { scroll-margin-top: 4rem; }
 .btn--ghost { border-color: var(--line); color: var(--espresso); --fill: var(--deep); }
 .btn--ghost:hover { color: var(--cream); }
 .btn--dark { background: var(--deep); color: var(--cream); --fill: var(--burnt); }
+:root[data-theme='dark'] .btn--dark { color: var(--espresso); }
 .btn--light { background: var(--cream); color: var(--espresso); --fill: var(--caramel); }
 :root[data-theme='dark'] .btn--light { --fill: var(--deep); }
 .btn.is-added { background: #3f6b3a; }
