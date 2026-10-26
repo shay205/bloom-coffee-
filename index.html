@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bloom Coffee Co. — Sip the Unexpected</title>
+    <meta
+      name="description"
+      content="Bloom Coffee Co. is a specialty coffee roaster. Single-origin beans, roasted slowly in small batches and poured with intention."
+    />
+    <meta name="theme-color" content="#f6efe4" id="theme-color" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23b5531c'/><circle cx='16' cy='16' r='6' fill='%23f6efe4'/></svg>"
+    />
+
+    <!-- Fonts: editorial serif + clean sans. Fallbacks exist if offline. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Lets CSS hide animated elements ONLY when JavaScript is running -->
+    <script>
+      document.documentElement.classList.add('js');
+      try {
+        if (localStorage.getItem('bloom-coffee-theme') === 'dark') {
+          document.documentElement.dataset.theme = 'dark';
+        }
+      } catch (error) {
+        console.warn('Saved color theme could not be read:', error);
+      }
+    </script>
+    <script type="module" src="/src/main.js"></script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- Reusable SVG symbols (logo mark + coffee bag illustration) -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+      <defs>
+        <symbol id="logo-mark" viewBox="0 0 48 48">
+          <g fill="currentColor">
+            <ellipse cx="24" cy="11" rx="4.6" ry="9.5" />
+            <ellipse cx="24" cy="11" rx="4.6" ry="9.5" transform="rotate(72 24 24)" />
+            <ellipse cx="24" cy="11" rx="4.6" ry="9.5" transform="rotate(144 24 24)" />
+            <ellipse cx="24" cy="11" rx="4.6" ry="9.5" transform="rotate(216 24 24)" />
+            <ellipse cx="24" cy="11" rx="4.6" ry="9.5" transform="rotate(288 24 24)" />
+          </g>
+          <ellipse cx="24" cy="24" rx="5.2" ry="7.4" fill="#b5531c" transform="rotate(35 24 24)" />
+          <path d="M22.4 18.6c2.4 2.2 2.4 8.6 0 10.8" stroke="#f6efe4" stroke-width="1.4" fill="none" stroke-linecap="round" transform="rotate(35 24 24)" />
+        </symbol>
+
+        <symbol id="bag">
+          <path d="M30 40h140l12 200c0 8-6 10-12 10H30c-6 0-12-2-12-10z" fill="var(--bag)" />
+          <path d="M30 40h140l2 22H28z" fill="rgba(0,0,0,.2)" />
+          <rect x="30" y="32" width="140" height="10" rx="3" fill="rgba(255,255,255,.4)" />
+          <circle cx="100" cy="150" r="50" fill="#f6ecdc" />
+          <text x="100" y="147" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="28" fill="#3b2012">Bloom</text>
+          <text x="100" y="169" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" letter-spacing="3" fill="#3b2012">COFFEE CO.</text>
+        </symbol>
+      </defs>
+    </svg>
+
+    <!-- ============ NAVIGATION ============ -->
+    <header class="site-header" id="top">
+      <div class="header__inner">
+        <a class="logo" href="#top" aria-label="Bloom Coffee Co. home">
+          <svg class="logo__mark" aria-hidden="true"><use href="#logo-mark" /></svg>
+          <span class="logo__text">Bloom <em>Coffee Co.</em></span>
+        </a>
+
+        <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+          <ul class="site-nav__list">
+            <li><a href="#story">Our Story</a></li>
+            <li><a href="#coffee">Coffee</a></li>
+            <li><a href="#process">Our Process</a></li>
+          </ul>
+        </nav>
+
+        <div class="header__actions">
+          <a class="btn btn--dark btn--sm" href="#coffee">
+            Shop <span class="cart-count" id="cart-count" aria-label="Items in bag">0</span>
+          </a>
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+            <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20.2 15.1A8.5 8.5 0 0 1 8.9 3.8 8.6 8.6 0 1 0 20.2 15.1z" />
+            </svg>
+            <svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
+            </svg>
+          </button>
+          <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+            <span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ============ HERO ============ -->
+      <section class="hero" aria-labelledby="hero-title">
+        <!-- Three.js renders into this element -->
+        <div class="hero__stage" id="scene">
+          <p class="hero__hint" aria-hidden="true">Drag to rotate</p>
+        </div>
+
+        <div class="hero__content">
+          <p class="eyebrow hero-anim">Specialty Coffee Roasters</p>
+          <h1 class="hero__title" id="hero-title" aria-label="Sip the unexpected">
+            <span class="line" aria-hidden="true"><span class="line__inner">SIP THE</span></span>
+            <span class="line line--accent" aria-hidden="true"><span class="line__inner">UNEXPECTED</span></span>
+          </h1>
+          <p class="hero__tagline hero-anim">Make time. Taste better.</p>
+          <p class="hero__text hero-anim">
+            Single-origin beans from high-altitude family farms, roasted slowly in small batches
+            and poured with intention. Coffee for the moments you choose to keep.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--primary hero-anim" href="#coffee">Discover our coffee</a>
+            <a class="btn btn--ghost hero-anim" href="#story">Our story</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ticker -->
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker__track">
+          <span>Single origin</span><span>Small batch</span><span>Roasted weekly</span><span>Fully traceable</span><span>Slow crafted</span>
+          <span>Single origin</span><span>Small batch</span><span>Roasted weekly</span><span>Fully traceable</span><span>Slow crafted</span>
+        </div>
+      </div>
+
+      <!-- ============ BRAND STORY ============ -->
+      <section class="section" id="story" aria-labelledby="story-title">
+        <div class="container story__grid">
+          <div class="story__copy">
+            <p class="eyebrow" data-reveal>Our Story</p>
+            <h2 class="section-title" id="story-title" data-reveal>Coffee worth <em>slowing down</em> for.</h2>
+            <p class="lead" data-reveal>
+              Bloom began with a simple belief: the best cup is never rushed. We work directly with
+              growers who tend their land season after season, and we pay for quality, not volume.
+            </p>
+            <p data-reveal>
+              Every lot is cupped, profiled and roasted by hand in small batches. We chase sweetness,
+              clarity and a finish that lingers, then we ship within days so it reaches you at its
+              peak.
+            </p>
+            <dl class="stats" data-reveal>
+              <div class="stat"><dt>Partner farms</dt><dd><strong data-count="14">14</strong></dd></div>
+              <div class="stat"><dt>Roast to door</dt><dd><strong data-count="48">48</strong><span>h</span></dd></div>
+              <div class="stat"><dt>Traceable</dt><dd><strong data-count="100" data-suffix="%">100%</strong></dd></div>
+            </dl>
+          </div>
+
+          <figure class="story__visual" data-reveal>
+            <div class="arch">
+              <img
+                class="arch__inner coffee-photo"
+                src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&amp;fit=crop&amp;w=1000&amp;q=80"
+                srcset="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&amp;fit=crop&amp;w=640&amp;h=900&amp;q=80 640w, https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&amp;fit=crop&amp;w=1000&amp;h=1400&amp;q=80 1000w"
+                sizes="(max-width: 900px) min(100vw - 2.5rem, 26rem), 40vw"
+                alt="Freshly brewed coffee served in a ceramic cup on a warm wooden table"
+                loading="lazy"
+                decoding="async"
+                data-fallback
+              />
+            </div>
+            <figcaption class="arch__chip">No. 01 — Poured, never rushed</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ============ PROCESS ============ -->
+      <section class="section section--sand" id="process" aria-labelledby="process-title">
+        <div class="container">
+          <header class="section__head">
+            <p class="eyebrow" data-reveal>Our Process</p>
+            <h2 class="section-title" id="process-title" data-reveal>From <em>seed</em> to sip.</h2>
+          </header>
+
+          <div class="cards">
+            <article class="card spotlight" data-reveal>
+              <span class="card__num">01</span>
+              <figure class="card__visual">
+                <img
+                  class="coffee-photo"
+                  src="https://images.pexels.com/photos/2036874/pexels-photo-2036874.jpeg?w=800&amp;h=450&amp;fit=crop"
+                  srcset="https://images.pexels.com/photos/2036874/pexels-photo-2036874.jpeg?w=480&amp;h=270&amp;fit=crop 480w, https://images.pexels.com/photos/2036874/pexels-photo-2036874.jpeg?w=900&amp;h=506&amp;fit=crop 900w"
+                  sizes="(max-width: 600px) 90vw, 30vw"
+                  alt="A farm worker inspecting coffee cherries on a leafy coffee plant"
+                  loading="lazy"
+                  decoding="async"
+                  data-fallback
+                />
+              </figure>
+              <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21v-9M12 12c0-4 3-6 7-6 0 4-3 6-7 6zM12 15c0-3-2.5-5-6-5 0 3 2.5 5 6 5z" /></svg>
+              <h3>Sourcing</h3>
+              <p>We visit every farm, taste every lot and pay well above fair-trade minimums for beans grown slowly at altitude.</p>
+              <span class="card__meta">1,800 – 2,200 m elevation</span>
+            </article>
+
+            <article class="card spotlight" data-reveal>
+              <span class="card__num">02</span>
+              <figure class="card__visual">
+                <img
+                  class="coffee-photo"
+                  src="https://images.pexels.com/photos/31890551/pexels-photo-31890551/free-photo-of-coffee-beans-roasting-in-industrial-machine.jpeg?w=800&amp;h=450&amp;fit=crop"
+                  srcset="https://images.pexels.com/photos/31890551/pexels-photo-31890551/free-photo-of-coffee-beans-roasting-in-industrial-machine.jpeg?w=480&amp;h=270&amp;fit=crop 480w, https://images.pexels.com/photos/31890551/pexels-photo-31890551/free-photo-of-coffee-beans-roasting-in-industrial-machine.jpeg?w=900&amp;h=506&amp;fit=crop 900w"
+                  sizes="(max-width: 600px) 90vw, 30vw"
+                  alt="Freshly roasted coffee beans tumbling from an industrial roasting machine"
+                  loading="lazy"
+                  decoding="async"
+                  data-fallback
+                />
+              </figure>
+              <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c1 4 5 5.5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-9z" /></svg>
+              <h3>Roasting</h3>
+              <p>Small batches, gentle heat curves and patient development bring out sweetness without ever masking origin.</p>
+              <span class="card__meta">Roasted to order, weekly</span>
+            </article>
+
+            <article class="card spotlight" data-reveal>
+              <span class="card__num">03</span>
+              <figure class="card__visual">
+                <img
+                  class="coffee-photo"
+                  src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&amp;fit=crop&amp;w=800&amp;q=80"
+                  srcset="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&amp;fit=crop&amp;w=480&amp;h=270&amp;q=80 480w, https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&amp;fit=crop&amp;w=900&amp;h=506&amp;q=80 900w"
+                  sizes="(max-width: 600px) 90vw, 30vw"
+                  alt="A barista prepares coffee at a professional espresso machine"
+                  loading="lazy"
+                  decoding="async"
+                  data-fallback
+                />
+              </figure>
+              <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9zM16 11h2a2.5 2.5 0 0 1 0 5h-2M8 3v3M12 3v3" /></svg>
+              <h3>Brewing</h3>
+              <p>Every coffee ships with a tested recipe. Fresh water, a steady pour and a few unhurried minutes do the rest.</p>
+              <span class="card__meta">93 °C · 1:16 ratio · 3 min</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PRODUCTS ============ -->
+      <section class="section" id="coffee" aria-labelledby="coffee-title">
+        <div class="container">
+          <header class="section__head">
+            <p class="eyebrow" data-reveal>The Collection</p>
+            <h2 class="section-title" id="coffee-title" data-reveal>Three ways to <em>bloom</em>.</h2>
+          </header>
+
+          <div class="products">
+            <article class="product" data-reveal>
+              <div class="product__art" style="--art-bg: linear-gradient(160deg,#f3dfb8,#e6c389)">
+                <span class="badge">Light roast</span>
+                <img
+                  class="product__photo coffee-photo"
+                  src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+                  srcset="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&amp;fit=crop&amp;w=480&amp;h=408&amp;q=80 480w, https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&amp;fit=crop&amp;w=900&amp;h=765&amp;q=80 900w"
+                  sizes="(max-width: 900px) 90vw, (max-width: 1200px) 45vw, 32vw"
+                  alt="Close-up of freshly roasted coffee beans"
+                  loading="lazy"
+                  decoding="async"
+                  data-fallback
+                />
+                <svg class="bag" viewBox="0 0 200 260" style="--bag:#d9a441" role="img" aria-label="Golden Hour coffee bag"><use href="#bag" /></svg>
+              </div>
+              <div class="product__body">
+                <p class="product__origin">Ethiopia · Guji · 340 g</p>
+                <h3>Golden Hour</h3>
+                <p>A bright, floral morning coffee with a honeyed sweetness and a clean, tea-like finish.</p>
+                <ul class="notes" aria-label="Tasting notes"><li>Jasmine</li><li>Apricot</li><li>Wild honey</li></ul>
+                <div class="product__foot">
+                  <span class="price">$24</span>
+                  <button class="btn btn--primary btn--sm add-btn" type="button" data-name="Golden Hour">Add to bag</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="product" data-reveal>
+              <div class="product__art" style="--art-bg: linear-gradient(160deg,#e9c597,#c98a4a)">
+                <span class="badge">Medium roast</span>
+                <img
+                  class="product__photo coffee-photo"
+                  src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+                  srcset="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&amp;fit=crop&amp;w=480&amp;h=408&amp;q=80 480w, https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&amp;fit=crop&amp;w=900&amp;h=765&amp;q=80 900w"
+                  sizes="(max-width: 900px) 90vw, (max-width: 1200px) 45vw, 32vw"
+                  alt="Freshly prepared coffee held in warm natural light"
+                  loading="lazy"
+                  decoding="async"
+                  data-fallback
+                />
+                <svg class="bag" viewBox="0 0 200 260" style="--bag:#b5531c" role="img" aria-label="Caramel Dusk coffee bag"><use href="#bag" /></svg>
+              </div>
+              <div class="product__body">
+                <p class="product__origin">Colombia · Huila · 340 g</p>
+                <h3>Caramel Dusk</h3>
+                <p>Our most-loved everyday roast: round, syrupy and deeply comforting from the first sip.</p>
+                <ul class="notes" aria-label="Tasting notes"><li>Salted caramel</li><li>Toasted almond</li><li>Cacao</li></ul>
+                <div class="product__foot">
+                  <span class="price">$22</span>
+                  <button class="btn btn--primary btn--sm add-btn" type="button" data-name="Caramel Dusk">Add to bag</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="product" data-reveal>
+              <div class="product__art" style="--art-bg: linear-gradient(160deg,#b89274,#6b4430)">
+                <span class="badge">Dark roast</span>
+                <img
+                  class="product__photo coffee-photo"
+                  src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+                  srcset="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&amp;fit=crop&amp;w=480&amp;h=408&amp;q=80 480w, https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&amp;fit=crop&amp;w=900&amp;h=765&amp;q=80 900w"
+                  sizes="(max-width: 900px) 90vw, (max-width: 1200px) 45vw, 32vw"
+                  alt="Rich espresso with a smooth crema, served in a cup"
+                  loading="lazy"
+                  decoding="async"
+                  data-fallback
+                />
+                <svg class="bag" viewBox="0 0 200 260" style="--bag:#2b1810" role="img" aria-label="Midnight Ember coffee bag"><use href="#bag" /></svg>
+              </div>
+              <div class="product__body">
+                <p class="product__origin">Sumatra · Mandheling · 340 g</p>
+                <h3>Midnight Ember</h3>
+                <p>Deep, velvety and smoky-sweet. Built for espresso, moka pots and long, quiet evenings.</p>
+                <ul class="notes" aria-label="Tasting notes"><li>Dark chocolate</li><li>Burnt orange</li><li>Cedar</li></ul>
+                <div class="product__foot">
+                  <span class="price">$26</span>
+                  <button class="btn btn--primary btn--sm add-btn" type="button" data-name="Midnight Ember">Add to bag</button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CLOSING ============ -->
+      <section class="closing" aria-labelledby="closing-title">
+        <div class="closing__ring" aria-hidden="true"></div>
+        <div class="container closing__inner">
+          <p class="eyebrow eyebrow--light" data-reveal>Bloom Coffee Co.</p>
+          <h2 id="closing-title" data-reveal>The best things are <em>poured</em>, not rushed.</h2>
+          <p data-reveal>Join us at the table. Make time, taste better, and let every cup be the one you remember.</p>
+          <a class="btn btn--light" href="#coffee" data-reveal>Find your roast</a>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="site-footer">
+      <div class="container footer__grid">
+        <div class="footer__brand">
+          <a class="logo logo--light" href="#top" aria-label="Back to top">
+            <svg class="logo__mark" aria-hidden="true"><use href="#logo-mark" /></svg>
+            <span class="logo__text">Bloom <em>Coffee Co.</em></span>
+          </a>
+          <p>Slow-roasted specialty coffee. Make time. Taste better.</p>
+        </div>
+        <nav aria-label="Footer navigation">
+          <ul class="footer__links">
+            <li><a href="#story">Our Story</a></li>
+            <li><a href="#coffee">Coffee</a></li>
+            <li><a href="#process">Our Process</a></li>
+            <li><a href="#top">Back to top</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="footer__copy">© <span id="year">2026</span> Bloom Coffee Co. All rights reserved.</p>
+    </footer>
+
+    <!-- Screen-reader friendly feedback for "Add to bag" -->
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
