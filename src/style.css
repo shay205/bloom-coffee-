@@ -336,12 +336,16 @@ section[id] { scroll-margin-top: 4rem; }
 .closing h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(2.6rem, 7vw, 6rem); line-height: 1; margin-bottom: 1.6rem; }
 .closing h2 em { color: var(--caramel); }
 .closing p:not(.eyebrow) { max-width: 34rem; margin: 0 auto 2.4rem; color: var(--sand); }
+:root[data-theme='dark'] .closing { color: var(--copy); }
+:root[data-theme='dark'] .closing p:not(.eyebrow) { color: var(--copy); }
 
 /* ---------- Footer ---------- */
 .site-footer { background: var(--deep); color: var(--sand); padding-top: 4rem; }
+:root[data-theme='dark'] .site-footer { color: var(--copy); }
 .footer__grid { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2.5rem; padding-bottom: 3rem; }
 .footer__brand p { margin-top: 1rem; max-width: 20rem; font-size: 0.95rem; }
 .logo--light { color: var(--cream); }
+:root[data-theme='dark'] .site-footer .logo--light { color: var(--copy); }
 .footer__links { display: grid; grid-template-columns: repeat(2, auto); gap: 0.7rem 3rem; }
 .footer__links a { font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; transition: color 0.3s; }
 .footer__links a:hover { color: var(--caramel); }
